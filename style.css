@@ -1,0 +1,805 @@
+@font-face{
+
+    font-family: 'CeraPro';
+
+    src: url('fonts/CeraPro-Bold.eot');
+
+    src: url('fonts/CeraPro-Bold.eot?iefix') format('eot'),
+
+    url('fonts/CeraPro-Bold.woff') format('woff'),
+
+    url('fonts/CeraPro-Bold.ttf') format('truetype');
+
+    font-weight: bold;
+
+    font-style: normal;
+
+}
+
+@font-face{
+
+    font-family: 'CeraPro';
+
+    src: url('fonts/CeraPro-Light.eot');
+
+    src: url('fonts/CeraPro-Light.eot?iefix') format('eot'),
+
+    url('fonts/CeraPro-Light.woff') format('woff'),
+
+    url('fonts/CeraPro-Light.ttf') format('truetype');
+
+    font-weight: 100;
+
+    font-style: normal;
+
+}
+
+body {
+    font-family: 'CeraPro', sans-serif;
+    color: #455273;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+}
+
+body,
+.main-container,
+.information-about-company,
+.order-window,
+.input-container,
+.order-details,
+.selection-water-volume,
+.select-date-and-time,
+.select-date,
+.select-date-days,
+.select-time,
+.button-select-time,
+.total-price {
+    display: flex;
+}
+
+.information-about-company,
+.order-window,
+.select-date-and-time,
+.select-date,
+.select-time {
+    flex-direction: column;
+}
+
+.main-container {
+    width: 1440px;
+    height: 780px;
+    background-color: #E9EFFC;
+    align-items: center;
+}
+
+.information-about-company {
+    width: 500px;
+    align-items: center;
+    font-weight: 200;
+}
+
+.main-logo {
+    width: 130px;
+    height: 130px;
+    background-image: url("img/logo.png");
+}
+
+.main-header,
+.order-window-header {
+    font-size: 24px;
+}
+
+.main-header {
+    color: #455273;
+    font-weight: bold;
+}
+
+.company-description {
+    width: 220px;
+    text-align: center;
+    color: #818FB3;;
+    line-height: 21px;
+}
+
+.order-window {
+    width: 740px;
+    padding: 30px 40px;
+    border-radius: 5px;
+    margin-left: -25px;
+
+    background-color: #F5F8FF;
+}
+
+.order-window-header {
+    margin-bottom: 22px;
+}
+
+.order-details {
+    padding-bottom: 45px;
+    border-bottom: 1px dotted #D5DDE0;
+    margin-top: 11px;
+
+}
+
+.selection-water-volume {
+    width: 50%;
+    position: relative;
+}
+
+.block-selection-water-volume {
+    position: absolute;
+    margin-bottom: 10px;
+}
+
+.select-date-and-time-header {
+    margin: 17px 0 18px 0;
+}
+
+.select-date-and-time {
+    padding-left: 72px;
+    width: 50%;
+}
+
+.select-date-days-header {
+    margin: 0 0 10px 0;
+    color: #BABDC2;
+    font-size: 13px;
+}
+
+.total-price {
+    height: 61px;
+    justify-content: space-between;
+}
+
+.input-container {
+    justify-content: space-between;
+    padding-bottom: 15px;
+    margin-top: 18px;
+    border-bottom: 1px dotted #D5DDE0;
+    flex-wrap: wrap;
+}
+
+.input-block {
+    width: 315px;
+}
+
+.user-name,
+.user-phone-number,
+.user-email,
+.user-address {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    width: 315px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #D5DDE0;
+}
+
+.user-name::placeholder,
+.user-phone-number::placeholder,
+.user-email::placeholder,
+.user-address::placeholder {
+    color: #BABDC2;
+}
+
+.user-address,
+.user-phone-number {
+    margin-top: 30px;
+}
+
+.container-accept-agreement {
+    display: flex;
+    align-items: center;
+
+    margin-top: 20px;
+}
+
+.accept-agreement {
+    display: none;
+}
+
+.label-accept-agreement,
+.label-accept-agreement_checked {
+    border-radius: 4px;
+    margin: 0;
+}
+
+.label-accept-agreement {
+    width: 14px;
+    height: 14px;
+    border: 1px solid #D5DDE0;
+}
+
+.label-accept-agreement_checked {
+    width: 16px;
+    height: 16px;
+    background: #418DE8 url("img/Vector.png") center no-repeat;
+}
+
+.text-accept-agreement,
+.price-selection-water-volume,
+.remove-selection-party,
+.add-selection-party,
+.quantity-selection-party,
+.day-of-month,
+.select-time {
+    font-size: 12px;
+}
+
+.text-accept-agreement {
+    margin-left: 10px;
+}
+
+.user-agreement-link {
+    color: #418DE8;
+    text-decoration: none;
+}
+
+.information-about-selected-water-volume {
+    width: 95px;
+    height: 130px;
+    background: #FFF url("img/water_bottle.png") bottom no-repeat;
+    border-radius: 10px;
+
+    margin: 60px 20px 0 0;
+}
+
+.total-price-header,
+.block-selection-water-volume,
+.select-date-and-time-header,
+.volume-selection-water-volume {
+    font-size: 18px;
+}
+
+.volume-selection-water-volume {
+    font-weight: bold;
+    display: block;
+    padding: 11px 0 0 11px;
+    color: #455273;
+}
+
+.quantity-selection-water-volume {
+    margin: -16px 0 0 10px;
+    color: #BABDC2;
+}
+
+.price-selection-water-volume {
+    margin: 52px 0 0 12px;
+    color: #FFF;
+}
+
+.quantity-control {
+    margin-top: 15px;
+    margin-bottom: -32px;
+    padding-right: 20px;
+    display: flex;
+    justify-content: space-around;
+    display: none;
+}
+
+.remove-selection-party,
+.add-selection-party {
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    display: flex;
+    border: none;
+    border-radius: 50%;
+    outline: none;
+    justify-content: center;
+    align-items: center;
+
+    color: #FFF;
+    background-color: #FFC369;
+}
+
+.remove-selection-party > b,
+.company-description {
+    font-size: 14px;
+}
+
+.remove-selection-party > b {
+    margin-top: -3px;
+}
+
+.add-selection-party > b {
+    margin-left: -1px;
+}
+
+.quantity-selection-party {
+    color: #455273;
+    width: 10px;
+}
+
+.select-date-scroll-date-left,
+.select-date-scroll-date-right {
+    width: 30px;
+    height: 30px;
+    border: 2px solid #E5EDFF;
+    outline: none;
+    border-radius: 50%;
+    background: transparent center no-repeat;
+}
+
+.select-date-scroll-date-left {
+    background-image: url("img/shape-left.png");
+}
+
+.select-date-scroll-date-right {
+    background-image: url("img/shape-right.png");
+}
+
+.date-list-days {
+    display: flex;
+}
+
+.date-day {
+    width: 30px;
+    height: 30px;
+    background-color: #E5EDFF;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.date-day,
+.select-date-scroll-date-left,
+.select-date-scroll-date-right {
+    margin-right: 8px;
+}
+
+.day-of-month {
+    line-height: 0;
+    margin-top: 9px;
+}
+
+.date-day-of-week {
+    font-size: 9px;
+    line-height: 0;
+    margin-top: 11px;
+    color: #9CAEDD;
+}
+
+.date-day-of-week-output {
+    color: #FD7562;
+}
+
+.date-day_selected {
+    color: #FFF;
+    background-color: #FFC369;
+}
+
+.date-day_selected > date-day-of-week {
+    color: #FFF;
+}
+.select-time-header {
+    margin: 12px 0 10px 0;
+    color: #BABDC2;
+    font-size: 13px;
+}
+
+.select-time {
+    background-color: #E5EDFF;
+    border-radius: 25px;
+    padding: 8px 10px;
+    margin-right: 10px;
+
+    font-weight: bold;
+}
+
+select-time_selected {
+    background-color: #FFC369;
+}
+
+.total-price {
+    border-bottom: 1px solid #D5DDE0;
+}
+
+.total-price-header {
+    margin-top: 28px;
+}
+
+.rubles-total-price {
+    font-weight: bold;
+}
+
+.rubles-total-price {
+    margin-top: 28px;
+    font-size: 19px;
+}
+
+.pennies-total-price {
+    color: #D5DDE0;
+}
+
+.finish-order,
+.start-order,
+.next-order-dtely,
+.next-order-dtely_active {
+    width: 163px;
+    padding: 12px;
+    margin-top: 40px;
+
+    background-color: #418DE8;
+    border: none;
+    border-radius: 30px;
+    outline: none;
+
+    color: #FFF;
+}
+
+.start-order {
+    margin-top: 65px;
+}
+
+.start-order,
+.next-order-dtely,
+.next-order-dtely_active {
+    display: none;
+}
+
+.finish-order {
+    opacity: 0.3;
+}
+
+.finish-order_active {
+    opacity: 1;
+}
+
+@media screen and (max-width: 1300px) {
+    .main-container {
+        width: 1240px;
+        height: 700px;
+    }
+
+    .information-about-company {
+        width: 350px;
+    }
+}
+
+@media screen and (max-width: 1150px) {
+    body {
+        overflow-y: hidden;
+        overflow-x: scroll;
+    }
+
+    .company-description {
+        margin-top: 35px;
+    }
+
+    .information-about-company {
+        background-color: #F5F8FF;
+        padding: 50px 0;
+    }
+
+    .order-window {
+        height: 100vh;
+        width: 100%;
+        align-items: center;
+        display: none;
+    }
+
+    .main-container {
+        height: 100vh;
+        justify-content: center;
+    }
+
+    .information-about-company {
+        height: 80vh;
+        width: 80%;
+    }
+
+    .main-logo {
+        width: 250px;
+        height: 250px;
+
+        -webkit-background-size: 250px;
+        background-size: 250px;
+    }
+
+    .main-header {
+        font-size: 48px;
+        margin-top: 55px;
+    }
+
+    .company-description {
+        width: 480px;
+        font-size: 30px;
+        line-height: 45px;
+        margin-top: 70px;
+    }
+
+    .start-order,
+    .next-order-dtely,
+    .next-order-dtely_active,
+    .finish-order {
+        width: 325px;
+        font-size: 30px;
+        padding: 25px;
+        border-radius: 45px;
+        margin-top: 85px;
+    }
+
+    .start-order,
+    .next-order-dtely,
+    .next-order-dtely_active {
+        display: block;
+    }
+
+    .start-order,
+    .next-order-dtely,
+    .next-order-dtely_active {
+        margin: auto;
+    }
+
+    .next-order-dtely,
+    .next-order-dtely_active {
+        opacity: 0.3;
+        position: absolute;
+        left: 35%;
+        left: calc(50% - 162px);
+        bottom: 50px;
+    }
+
+    .next-order-dtely_active {
+        opacity: 1;
+    }
+
+    .order-details,
+    .total-price,
+    .finish-order {
+        display: none;
+    }
+
+    .order-details {
+        flex-direction: column;
+        width: 80%;
+        padding-top: 210px;
+    }
+
+    .input-container {
+        flex-direction: column;
+    }
+
+    .user-email {
+        margin-top: 30px;
+    }
+
+    .order-window,
+    .input-container {
+        width: 100%;
+    }
+
+    .order-window {
+        justify-content: center;
+    }
+
+    .input-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .input-container {
+        width: 60%;
+        border: none;
+        align-items: flex-start;
+    }
+
+    .input-block {
+        width: 100%;
+    }
+
+    .order-window-header {
+        font-size: 34px;
+        padding-right: 225px;
+        margin-bottom: 3px;
+    }
+
+    .user-name,
+    .user-phone-number,
+    .user-email,
+    .user-address {
+        width: 100%;
+        margin-top: 45px;
+        height: 50px;
+    }
+
+    .text-accept-agreement,
+    .user-name::placeholder,
+    .user-phone-number::placeholder,
+    .user-email::placeholder,
+    .user-address::placeholder,
+    .user-name,
+    .user-phone-number,
+    .user-email,
+    .user-address {
+        font-size: 24px;
+    }
+
+    .label-accept-agreement {
+        width: 42px;
+        height: 30px;
+    }
+
+    .label-accept-agreement_checked {
+        width: 44px;
+        height: 32px;
+        -webkit-background-size: 20px;
+        background-size: 20px;
+    }
+
+    .block-selection-water-volume {
+        position: absolute;
+        top: -145px;
+        left: 20px;
+        font-size: 40px;
+        font-size: 40px;
+    }
+
+    .information-about-selected-water-volume {
+        height: 290px;
+        width: 225px;
+        background-size: 225px;
+        border-radius: 20px;
+        margin: 0 20px;
+        position: relative;
+    }
+
+    .volume-selection-water-volume {
+        font-size: 38px;
+        position: absolute;
+        top: -25px;
+        left: 15px;
+    }
+
+    .quantity-selection-water-volume {
+        font-size: 20px;
+        position: absolute;
+        top: 100px;
+        left: 20px;
+    }
+
+    .price-selection-water-volume {
+        font-size: 26px;
+        position: absolute;
+        bottom: 25px;
+        left: 20px;
+    }
+
+    .remove-selection-party,
+    .add-selection-party {
+        font-size: 28px;
+        width: 40px;
+        height: 40px;
+        margin-top: 20px;
+    }
+
+    .remove-selection-party > b {
+        font-size: 28px;
+    }
+
+    .quantity-selection-party {
+        font-size: 28px;
+        margin-top: 18px;
+    }
+
+    .select-date-and-time-header {
+        font-size: 40px;
+        white-space: nowrap;
+        margin-top: 120px;
+    }
+
+    .select-date-and-time {
+        width: 100%;
+        padding-left: 18px;
+    }
+
+    .date-day {
+        width: 50px;
+        height: 50px;
+        padding: 10px;
+        position: relative;
+        margin-right: 20px;
+    }
+
+    .select-date-days-header {
+        font-size: 30px;
+    }
+
+    .day-of-month {
+        font-size: 28px;
+        position: absolute;
+        top: 12px;
+    }
+
+    .date-day-of-week {
+        font-size: 26px;
+        position: absolute;
+        bottom: 0;
+    }
+
+    .select-date-scroll-date-left,
+    .select-date-scroll-date-right {
+        display: none;
+    }
+
+    .select-time-header {
+        font-size: 28px;
+    }
+
+    .select-date {
+        margin-top: 25px;
+    }
+
+    .select-time {
+        font-size: 28px;
+        border-radius: 40px;
+        padding: 15px 20px;
+        white-space: nowrap;
+    }
+
+    .select-time-header {
+        margin: 32px 0 20px 0;
+    }
+
+    .total-price {
+        width: 80%;
+        height: 70px;
+        padding: 0px 0 40px 35px;
+        margin-top: 60px;
+        justify-content: space-between;
+    }
+
+    .total-price-header {
+        font-size: 40px;
+    }
+
+    .rubles-total-price {
+        font-size: 40px;
+        right: 0;
+    }
+
+    .rubles-total-price {
+    }
+
+    .button-return-to-previous-stage {
+        display: none;
+        width: 70px;
+        height: 70px;
+        background: #418DE8 url("img/arrow-back.png") center no-repeat;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+        position: absolute;
+        top: 20px;
+        left: 50px;
+    }
+}
+
+/*    .select-time-header {
+        font-size: 13px;
+    }
+
+    .remove-selection-party > b,
+    .company-description {
+        font-size: 14px;
+    }
+
+    .total-price-header,
+    .block-selection-water-volume,
+    .select-date-and-time-header,
+    .volume-selection-water-volume {
+        font-size: 18px;
+    }
+
+    .rubles-total-price {
+        font-size: 19px;
+    }
+
+    .main-header,
+    .order-window-header {
+        font-size: 24px;
+    }*/

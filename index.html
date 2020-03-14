@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Чистая Вода</title>
+</head>
+<body>
+<!--НЕ ЗАБЫВАЙ О МОБИЛЬНОЙ ВЕРСИИ И ДЕЛАЙ КЛАССЫ БОЛЕЕ УНИВЕРСАЛЬНЫМИ-->
+    <div class="main-container">
+        <div class="information-about-company">
+            <div class="main-logo"></div>
+            <h1 class="main-header">Чистая Вода</h1>
+            <p class="company-description">Питьевая вода, предназначенная для ежедневного потребления, идеально подходит для кулеров. Закажите доставку воды и мы привезем её на дом или в офис.</p>
+            <button class="start-order" type="submit">Заказать воду</button>
+        </div>
+        <div class="order-window">
+            <h2 class="order-window-header">Заполните данные</h2>
+            <div class="input-container">
+                <div class="input-block">
+                    <input class="user-name" placeholder="ФИО" type="text">
+                    <input class="user-phone-number" placeholder="Телефон" type="tel">
+                </div>
+                <div class="input-block">
+                    <input class="user-email" placeholder="Адрес электронной почты" type="email">
+                    <input class="user-address" placeholder="Адрес доставки" type="text">
+                </div>
+                <div class="container-accept-agreement">
+                    <input id="accept-agreement" class="accept-agreement" type="checkbox">
+                    <label class="label-accept-agreement" for="accept-agreement"></label>
+                    <p class="text-accept-agreement">Я согласен на <a class="user-agreement-link" href="#">обработку персональных данных</a></p>
+                </div>
+                <button class="next-order-dtely trigger-of-event-next-order-dtely">Далее</button>
+            </div>
+            <div class="button-return-to-previous-stage"></div>
+            <div class="order-details">
+                <div class="selection-water-volume"></div>
+                <div class="select-date-and-time">
+                    <h3 class="select-date-and-time-header">Дата и время доставки</h3>
+                    <div class="select-date">
+                        <p class="select-date-days-header">день</p>
+                        <div class="select-date-days">
+                            <button class="select-date-scroll-date-left"></button>
+                            <div class="date-list-days">
+
+                            </div>
+                            <button class="select-date-scroll-date-right"></button>
+                        </div>
+                    </div>
+                    <div class="container-select-time">
+                        <p class="select-time-header">время</p>
+                        <div class="button-select-time">
+                            <div class="select-time">10:00 - 11:00</div>
+                            <div class="select-time">12:00 - 13:00</div>
+                            <div class="select-time">15:00 - 16:00</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="total-price">
+                <h3 class="total-price-header">Итого</h3>
+                <p class="rubles-total-price">220,<b class="pennies-total-price">00 ₽</b></p>
+            </div>
+            <button class="finish-order" type="submit">Заказать воду</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
