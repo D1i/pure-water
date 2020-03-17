@@ -1,13 +1,14 @@
 (function() {
-    "use strict"
+    "use strict";
 
     function checkedCheckboxOfLabel(event) {
+        let elem = event.target;
 
-        if (event.target.getAttribute("class") === "label-accept-agreement") {
-            event.target.setAttribute("class", "label-accept-agreement_checked");
+        if (elem.getAttribute("class") === "label-accept-agreement") {
+            elem.setAttribute("class", "label-accept-agreement_checked");
             return;
         }
-        event.target.setAttribute("class", "label-accept-agreement");
+        elem.setAttribute("class", "label-accept-agreement");
     }
 
     function transitionToOrder() {
@@ -16,41 +17,44 @@
     }
 
     function fieldValidation(){
+        let elem = document.querySelector(".next-order-dtely");
+        let activeElem = document.querySelector(".next-order-dtely_active");
         if (processValidationPass.validationNamePassed &&
             processValidationPass.validationPhoneNumberPassed &&
             processValidationPass.validationEmailPassed &&
             processValidationPass.validationAddressPassed &&
             processValidationPass.validationAcceptingAgreement &&
-            !!document.querySelector(".next-order-dtely")) {
-            document.querySelector(".next-order-dtely").setAttribute("class", "next-order-dtely_active trigger-of-event-next-order-dtely")
+            Boolean(elem)) {
+            elem.setAttribute("class", "next-order-dtely_active trigger-of-event-next-order-dtely")
             return;
         } else {
-            if (document.querySelector(".next-order-dtely_active") === null) {
+            if (activeElem === null) {
                 return;
             }
-            document.querySelector(".next-order-dtely_active").setAttribute("class", "next-order-dtely trigger-of-event-next-order-dtely")
+            activeElem.setAttribute("class", "next-order-dtely trigger-of-event-next-order-dtely")
         }
     }
 
     function fieldValidationName() {
         userData.name = document.querySelector(".user-name").value;
+        let name = userData.name;
         let positionSpace = 0;
         for (let i = 0; i < 2; i++) {
-            if (userData.name.indexOf(" ", positionSpace) === -1) {
+            if (name.indexOf(" ", positionSpace) === -1) {
                     processValidationPass.validationNamePassed = false;
                     return;
                 }
-                positionSpace = userData.name.indexOf(" ") + 1;
+                positionSpace = name.indexOf(" ") + 1;
             }
             positionSpace = 0;
             for (let i = 0; i < 3; i++) {
-                if (userData.name[userData.name.indexOf(" ", positionSpace) + 1] === undefined ||
-                    userData.name[userData.name.indexOf(" ", positionSpace) + 1] === " ") {
+                if (name[name.indexOf(" ", positionSpace) + 1] === undefined ||
+                    name[name.indexOf(" ", positionSpace) + 1] === " ") {
                     processValidationPass.validationNamePassed = false;
                     fieldValidation();
                     return;
                 }
-                positionSpace = userData.name.indexOf(" ") + 1;
+                positionSpace = name.indexOf(" ") + 1;
             }
         processValidationPass.validationNamePassed = true;
         fieldValidation();
@@ -59,8 +63,7 @@
 
     function fieldValidationPhoneNumber() {
         userData.phoneNumber = document.querySelector(".user-phone-number").value;
-        if (!Number(userData.phoneNumber) &&
-            !(Number(userData.phoneNumber) > 999)) {
+        if (!(Number(userData.phoneNumber) > 999)) {
             processValidationPass.validationPhoneNumberPassed = false;
             return;
         }
@@ -69,8 +72,9 @@
     }
 
     function fieldValidationEmail() {
-        userData.email = userData.phoneNumber = document.querySelector(".user-email").value;
-        if (!userData.email.includes("@") || !userData.email.includes(".")) {
+        let email = userData.email;
+        email = document.querySelector(".user-email").value;
+        if (!email.includes("@") || !email.includes(".")) {
             processValidationPass.validationEmailPassed = false;
             fieldValidation();
             return;
@@ -80,7 +84,7 @@
     }
 
     function fieldValidationAddress() {
-        userData.date = userData.phoneNumber = document.querySelector(".user-address").value;
+        userData.date = document.querySelector(".user-address").value;
         if (userData.date.length < 1) {
             processValidationPass.validationAddressPassed = false;
             fieldValidation();
@@ -130,10 +134,11 @@
     }
 
     function transitionToOrderDetals() {
-        if (document.querySelector(".trigger-of-event-next-order-dtely") === null) {
+        const elem = document.querySelector(".trigger-of-event-next-order-dtely");
+        if (elem === null) {
             return;
         }
-        if (!document.querySelector(".trigger-of-event-next-order-dtely").getAttribute("class").includes("next-order-dtely_active")) {
+        if (!elem.getAttribute("class").includes("next-order-dtely_active")) {
             return;
         }
 
@@ -155,25 +160,28 @@
     }
 
     function controlSelectionParty(event) {
-        if (event.target.parentNode.getAttribute("class") !== "add-selection-party" &&
-            event.target.parentNode.getAttribute("class") !== "remove-selection-party") {
+        const getClassElemParentNode = event.target.parentNode.getAttribute("class");
+        const getClassElemParentNodeParentNode = event.target.parentNode.parentNode.querySelector(".quantity-selection-party").innerHTML;
+
+        if (getClassElemParentNode !== "add-selection-party" &&
+            getClassElemParentNode !== "remove-selection-party") {
             return;
         }
 
         if (event.target.getAttribute("class") === "add-selection-party" ||
-            event.target.parentNode.getAttribute("class") === "add-selection-party") {
-            event.target.parentNode.parentNode.querySelector(".quantity-selection-party").innerHTML = +event.target.parentNode.parentNode.querySelector(".quantity-selection-party").innerHTML + 1;
-            if (event.target.parentNode.parentNode.querySelector(".quantity-selection-party").innerHTML === "NaN") {
-                event.target.parentNode.parentNode.querySelector(".quantity-selection-party").innerHTML = 1;
+            getClassElemParentNode === "add-selection-party") {
+            getClassElemParentNodeParentNode = +event.target.parentNode.parentNode.querySelector(".quantity-selection-party").innerHTML + 1;
+            if (getClassElemParentNodeParentNode === "NaN") {
+                getClassElemParentNodeParentNode = 1;
             }
         }
 
         if (event.target.getAttribute("class") === "remove-selection-party" ||
-            event.target.parentNode.getAttribute("class") === "remove-selection-party") {
-            event.target.parentNode.parentNode.querySelector(".quantity-selection-party").innerHTML = +event.target.parentNode.parentNode.querySelector(".quantity-selection-party").innerHTML - 1;
-            if (event.target.parentNode.parentNode.querySelector(".quantity-selection-party").innerHTML === "NaN" ||
-                event.target.parentNode.parentNode.querySelector(".quantity-selection-party").innerHTML === "-1") {
-                event.target.parentNode.parentNode.querySelector(".quantity-selection-party").innerHTML = 0;
+            getClassElemParentNode === "remove-selection-party") {
+            getClassElemParentNodeParentNode = +event.target.parentNode.parentNode.querySelector(".quantity-selection-party").innerHTML - 1;
+            if (isNaN(getClassElemParentNodeParentNode) ||
+                getClassElemParentNodeParentNode === "-1") {
+                getClassElemParentNodeParentNode = 0;
             }
         }
         priceСalculation(event.target);
