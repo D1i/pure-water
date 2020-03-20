@@ -161,7 +161,8 @@
 
     function controlSelectionParty(event) {
         const getClassElemParentNode = event.target.parentNode.getAttribute("class");
-        const getClassElemParentNodeParentNode = event.target.parentNode.parentNode.querySelector(".quantity-selection-party").innerHTML;
+        let elemParentNodeContent = Number(event.target.parentNode.parentNode.querySelector(".quantity-selection-party").innerHTML);
+        //complete
 
         if (getClassElemParentNode !== "add-selection-party" &&
             getClassElemParentNode !== "remove-selection-party") {
@@ -170,20 +171,21 @@
 
         if (event.target.getAttribute("class") === "add-selection-party" ||
             getClassElemParentNode === "add-selection-party") {
-            getClassElemParentNodeParentNode = +event.target.parentNode.parentNode.querySelector(".quantity-selection-party").innerHTML + 1;
-            if (getClassElemParentNodeParentNode === "NaN") {
-                getClassElemParentNodeParentNode = 1;
-            }
+            elemParentNodeContent++
+            elemParentNodeContent = isNaN(elemParentNodeContent)?
+                1:
+                elemParentNodeContent;
         }
 
         if (event.target.getAttribute("class") === "remove-selection-party" ||
             getClassElemParentNode === "remove-selection-party") {
-            getClassElemParentNodeParentNode = +event.target.parentNode.parentNode.querySelector(".quantity-selection-party").innerHTML - 1;
-            if (isNaN(getClassElemParentNodeParentNode) ||
-                getClassElemParentNodeParentNode === "-1") {
-                getClassElemParentNodeParentNode = 0;
-            }
+            elemParentNodeContent -= 1;
+            elemParentNodeContent = isNaN(elemParentNodeContent) || elemParentNodeContent === -1?
+                0:
+                elemParentNodeContent;
         }
+
+        event.target.parentNode.parentNode.querySelector(".quantity-selection-party").innerHTML = elemParentNodeContent;
         priceСalculation(event.target);
     }
 
@@ -330,11 +332,12 @@
         if (event.target.getAttribute("class") !== "date-day" &&
             event.target.parentNode.getAttribute("class") !== "date-day") {
             return;
-        }
+        }//job
         let target = event.target;
-        if (event.target.parentNode.getAttribute("class") === "date-day") {
-            target = event.target.parentNode;
-        }
+        target = event.target.parentNode.getAttribute("class") === "date-day"?
+            event.target.parentNode:
+            target;
+        
         let week = document.querySelectorAll(".date-day");
         for (let i = 0; i < 7; i++) {
             week[i].removeAttribute("style");
