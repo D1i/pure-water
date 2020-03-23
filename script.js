@@ -215,34 +215,46 @@
         }
         let dayOfWeek = new Date(year, month, dayOfMonth).getDay();
         let lastDayOfMonth = new Date(year, month, 0).getDate();
-        switch (dayOfWeek) {
-            case 1:
-                dayOfWeek = "ПН"
-                break;
-            case 2:
-                dayOfWeek = "ВТ"
-                break;
-            case 3:
-                dayOfWeek = "СР"
-                break;
-            case 4:
-                dayOfWeek = "ЧТ"
-                break;
-            case 5:
-                dayOfWeek = "ПТ"
-                break;
-            case 6:
-                dayOfWeek = "СБ"
-                break;
-            case 0:
-                dayOfWeek = "ВС"
-                break;
-        }
+         dayOfWeek =  ["ВС", "ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ",][dayOfWeek]
         let dayDate = {}
         dayDate.dayOfWeek = dayOfWeek;
         dayDate.lastDayOfMonth = lastDayOfMonth;
         dayDate.month = month;
         return dayDate;
+    }
+
+    function templateGenearateDate(dayOfRender, dayName, week, firstDayDate, i) {
+        if (dayOfRender.dayOfWeek === "СБ" ||
+            dayOfRender.dayOfWeek === "ВС") {
+            dayName = `
+                <p class="date-day-of-week date-day-of-week-output">${dayOfRender.dayOfWeek}</p>
+                `
+        } else {
+            dayName = `
+                <p class="date-day-of-week">${dayOfRender.dayOfWeek}</p>
+                `
+        }
+
+        if (selectedDayDate === firstDayDate + i) {
+            dayName = `
+                <p style="color: rgb(255, 255, 255);" class="date-day-of-week date-day-of-week-output">${dayOfRender.dayOfWeek}</p>
+                `
+            week = ` ${week}
+            <div style="background-color: rgb(255, 195, 105); color: rgb(255, 255, 255);" class="date-day">
+            <b class="day-of-month">${firstDayDate + i}</b>
+             ${dayName}
+            </div>
+            `
+        } else {
+            week = ` ${week}
+            <div class="date-day">
+            <b class="day-of-month">${firstDayDate + i}</b>
+             ${dayName}
+            </div>
+            `
+        }
+
+        return week;
     }
 
     function generateWeekDate(firstDayDate) {
@@ -253,11 +265,11 @@
             if (firstDayDate <= 0) {
                 generateDayDate(firstDayDate - i, dateDayOfNextMonth)
             }
-            if (dayOfRender.month !==  todayMonth) {
-            }
+
             if (dateDayOfNextMonth) {
                 firstDayDate = 0 - i;
             }
+
             if (firstDayDate + 7 <= 0) {
                 if (generateDayDate(firstDayDate - i, dateDayOfNextMonth).month > 0) {
                     let thisYear = new Date().getFullYear();
@@ -266,6 +278,7 @@
                     firstDayDate  = monthAfterDays - 2;
                 }
             }
+
             if (firstDayDate + i  === 0) {
                 if (generateDayDate(firstDayDate - i, dateDayOfNextMonth).month > 0) {
                     let thisYear = new Date().getFullYear();
@@ -274,39 +287,14 @@
                     firstDayDate  = monthAfterDays + 1;
                 }
             }
+
             if (firstDayDate + i >= dayOfRender.lastDayOfMonth + 3) {
                 dateDayOfNextMonthValid = true;
 
                 firstDayDate = firstDayDate - dayOfRender.lastDayOfMonth - 2;
             }
-            if (dayOfRender.dayOfWeek === "СБ" ||
-                dayOfRender.dayOfWeek === "ВС") {
-                dayName = `
-                <p class="date-day-of-week date-day-of-week-output">${dayOfRender.dayOfWeek}</p>
-                `
-            } else {
-                dayName = `
-                <p class="date-day-of-week">${dayOfRender.dayOfWeek}</p>
-                `
-            }
-            if (selectedDayDate === firstDayDate + i) {
-                dayName = `
-                <p style="color: rgb(255, 255, 255);" class="date-day-of-week date-day-of-week-output">${dayOfRender.dayOfWeek}</p>
-                `
-                week = ` ${week}
-            <div style="background-color: rgb(255, 195, 105); color: rgb(255, 255, 255);" class="date-day">
-            <b class="day-of-month">${firstDayDate + i}</b>
-             ${dayName}
-            </div>
-            `
-            } else {
-                week = ` ${week}
-            <div class="date-day">
-            <b class="day-of-month">${firstDayDate + i}</b>
-             ${dayName}
-            </div>
-            `
-            }
+
+            week = templateGenearateDate(dayOfRender, dayName, week, firstDayDate, i);
         }
 
         document.querySelector(".date-list-days").innerHTML = week;
@@ -332,12 +320,12 @@
         if (event.target.getAttribute("class") !== "date-day" &&
             event.target.parentNode.getAttribute("class") !== "date-day") {
             return;
-        }//job
+        }
         let target = event.target;
         target = event.target.parentNode.getAttribute("class") === "date-day"?
             event.target.parentNode:
             target;
-        
+
         let week = document.querySelectorAll(".date-day");
         for (let i = 0; i < 7; i++) {
             week[i].removeAttribute("style");
@@ -360,7 +348,7 @@
                             <div class="select-time">12:00 - 13:00</div>
                             <div class="select-time">15:00 - 16:00</div>
             `
-        selectedDayDate = +target.querySelector(".day-of-month").innerHTML;
+        //selectedDayDate = +target.querySelector(".day-of-month").innerHTML;
     }
 
     function checkedTime(event) {
@@ -379,6 +367,7 @@
     function priceСalculation(target) {
        let price = target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.querySelector(".price-selection-water-volume").innerHTML;
         //stop developoment
+        //ok, hello ! I will continue!)
     }
 
     let dateDayOfNextMonth;
